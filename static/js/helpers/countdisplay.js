@@ -14,22 +14,24 @@ TextfieldCounter.helpers.countdisplay = {
     createCountDisplay: function () {
         if (this.object.textfieldcount_settings) {
             var lengths = this.object.textfieldcount_settings[this.fieldConfig.name];
-            var maxlength = this.fieldConfig.columnLength;
-            if (!maxlength) {
-                maxlength = lengths.charsmax;
-            }
+            if (lengths) {
+                var maxlength = this.fieldConfig.columnLength;
+                if (!maxlength) {
+                    maxlength = lengths.charsmax;
+                }
 
-            if (maxlength) {
-                var new_input = {
-                    enableKeyEvents: true,
-                    plugins: new Ext.ux.plugins.Counter(),
-                    charsmin: lengths.charsmin,
-                    charstargetmin: lengths.charstargetmin,
-                    charstargetmax: lengths.charstargetmax,
-                    charsmax: lengths.charsmax
-                };
+                if (maxlength) {
+                    var new_input = {
+                        enableKeyEvents: true,
+                        plugins: new Ext.ux.plugins.Counter(),
+                        charsmin: lengths.charsmin,
+                        charstargetmin: lengths.charstargetmin,
+                        charstargetmax: lengths.charstargetmax,
+                        charsmax: lengths.charsmax
+                    };
 
-                this.component  = this.component.cloneConfig(new_input);
+                    this.component  = this.component.cloneConfig(new_input);
+                }
             }
         }
 
